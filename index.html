@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Media Buyer Club — Mastermind de Media Buying de Elite</title>
+  <meta name="description" content="O Mastermind definitivo para compradores de mídia de alta performance. Estratégias de Direct Response que não estão no YouTube." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-main':    '#07040B',
+            'bg-card':    '#0D0911',
+            'primary':    '#7AD1B8',
+            'destroy':    '#EF5F5F',
+            'txt':        '#F2F2F2',
+            'muted':      '#948B9E',
+            'bdr':        '#2A2433',
+          },
+          fontFamily: {
+            tight: ['Inter Tight', 'sans-serif'],
+            sans:  ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+            '5xl': '2.5rem',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ─── Reset & base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #07040B;
+      color: #F2F2F2;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── Grid background ──────────────────────────── */
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ─── Scrollbar ────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #07040B; }
+    ::-webkit-scrollbar-thumb { background: #2A2433; border-radius: 2px; }
+
+    /* ─── Typography helpers ───────────────────────── */
+    .heading {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #7AD1B8 0%, #4db8a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── Pill / badge ─────────────────────────────── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid rgba(122,209,184,0.28);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7AD1B8;
+    }
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7AD1B8;
+      flex-shrink: 0;
+    }
+
+    /* ─── Glow blobs ───────────────────────────────── */
+    .glow-green {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122,209,184,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .glow-red {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(239,95,95,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ─── Header ───────────────────────────────────── */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #site-header.scrolled {
+      background: rgba(7,4,11,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: #2A2433;
+    }
+
+    /* ─── Marquee ──────────────────────────────────── */
+    .marquee-track {
+      display: flex;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── Cards ────────────────────────────────────── */
+    .card {
+      background: #0D0911;
+      border: 1px solid #2A2433;
+      border-radius: 18px;
+      padding: 28px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .card:hover { border-color: rgba(122,209,184,0.3); }
+
+    .card-danger:hover {
+      border-color: rgba(239,95,95,0.35) !important;
+      box-shadow: 0 0 40px 4px rgba(239,95,95,0.12);
+    }
+
+    /* ─── Avatar gradient border ───────────────────── */
+    .avatar-ring {
+      padding: 2.5px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7AD1B8 0%, #4a90d9 50%, #9b59b6 100%);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .avatar-ring img,
+    .avatar-ring .avatar-fallback {
+      display: block;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #0D0911;
+    }
+    .avatar-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #7AD1B8;
+    }
+
+    /* ─── Horizontal carousel ──────────────────────── */
+    .carousel-scroll {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .carousel-scroll::-webkit-scrollbar { display: none; }
+    .carousel-scroll > * { scroll-snap-align: start; }
+
+    /* ─── Timeline ─────────────────────────────────── */
+    .timeline-wrap { position: relative; }
+    .timeline-spine {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, transparent 0%, #2A2433 15%, #7AD1B8 50%, #2A2433 85%, transparent 100%);
+    }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #7AD1B8;
+      border: 3px solid #07040B;
+      box-shadow: 0 0 14px 4px rgba(122,209,184,0.45);
+      flex-shrink: 0;
+    }
+
+    /* ─── Masonry ──────────────────────────────────── */
+    .masonry {
+      columns: 3;
+      column-gap: 16px;
+    }
+    @media (max-width: 1024px) { .masonry { columns: 2; } }
+    @media (max-width: 640px)  { .masonry { columns: 1; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 16px; }
+
+    /* ─── FAQ ──────────────────────────────────────── */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── Stat counter ─────────────────────────────── */
+    .stat-num {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    /* ─── Noise overlay ────────────────────────────── */
+    .noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* Responsive heading sizes */
+    .hero-title    { font-size: clamp(52px, 10vw, 128px); }
+    .section-title { font-size: clamp(36px, 6vw, 80px); }
+    .mid-title     { font-size: clamp(28px, 4vw, 60px); }
+  </style>
+</head>
+
+<body class="bg-grid">
+
+<!-- ══════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════ -->
+<header id="site-header">
+  <!-- Logo -->
+  <a href="#" class="flex items-center gap-3 no-underline group">
+    <div style="width:32px;height:32px;background:#7AD1B8;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <span style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:13px;color:#07040B;letter-spacing:-0.03em;">T</span>
+    </div>
+    <span style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#F2F2F2;">THE MEDIA BUYER CLUB</span>
+  </a>
+
+  <!-- CTA pill -->
+  <button style="background:#EF5F5F;color:#fff;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;border:none;cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+    INGRESSO ENCERRADO
+  </button>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section style="position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden;">
+
+  <!-- Glow blobs -->
+  <div class="glow-green" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-54%);"></div>
+  <div class="glow-green" style="width:300px;height:300px;top:60%;left:50%;transform:translate(-50%,-50%);opacity:.5;"></div>
+
+  <!-- Badge -->
+  <div class="pill" style="margin-bottom:28px;" data-aos="fade-up">
+    <span class="pill-dot" style="animation:pulse 2s infinite;"></span>
+    ACESSO RESTRITO
+  </div>
+
+  <!-- Emblem -->
+  <div data-aos="fade-up" data-aos-delay="80" style="margin-bottom:28px;">
+    <div style="width:96px;height:96px;margin:0 auto;background:#0D0911;border:1px solid #2A2433;border-radius:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px 4px rgba(122,209,184,0.12);">
+      <span style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;color:#7AD1B8;letter-spacing:-0.04em;">TMBC</span>
+    </div>
+  </div>
+
+  <!-- Main heading -->
+  <h1 class="heading hero-title" data-aos="fade-up" data-aos-delay="140" style="color:#F2F2F2;margin-bottom:24px;max-width:960px;">
+    THE MEDIA<br><span class="text-gradient">BUYER CLUB</span>
+  </h1>
+
+  <!-- Subheading -->
+  <p data-aos="fade-up" data-aos-delay="200" style="color:#948B9E;font-size:clamp(15px,2vw,18px);max-width:560px;line-height:1.65;margin-bottom:40px;">
+    Estratégias de Direct Response e Compra de Mídia de Alta Performance para quem já escala. Um grupo fechado de elite — onde o jogo é jogado de verdade.
+  </p>
+
+  <!-- CTA -->
+  <div data-aos="fade-up" data-aos-delay="260" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;">
+    <button style="background:#EF5F5F;color:#fff;font-family:'Inter Tight',sans-serif;font-weight:900;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:16px 36px;border-radius:14px;border:none;cursor:not-allowed;display:flex;align-items:center;gap:10px;">
+      <i data-lucide="lock" style="width:16px;height:16px;"></i>
+      INGRESSO ENCERRADO
+    </button>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;">
+      <span style="color:#948B9E;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Valor do acesso</span>
+      <span style="color:#948B9E;font-size:20px;font-family:'Inter Tight',sans-serif;font-weight:700;text-decoration:line-through;">R$ 1.997</span>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div data-aos="fade-up" data-aos-delay="400" style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.45;">
+    <span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#948B9E;">Scroll</span>
+    <i data-lucide="chevron-down" style="width:16px;height:16px;color:#948B9E;animation:bounce 2s infinite;"></i>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SOCIAL PROOF BAR
+══════════════════════════════════════════════════ -->
+<div style="border-top:1px solid #2A2433;border-bottom:1px solid #2A2433;padding:18px 0;overflow:hidden;position:relative;">
+  <div class="marquee-track">
+    <!-- Set A -->
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">META ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">GOOGLE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">TIKTOK ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">YOUTUBE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">NATIVE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">DIRECT RESPONSE</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <!-- Set B (duplicate for seamless loop) -->
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">META ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">GOOGLE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">TIKTOK ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">YOUTUBE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">NATIVE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">DIRECT RESPONSE</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     UM RECADO DIRETO DO ALLAN
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px;max-width:1200px;margin:0 auto;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;" class="about-grid">
+    <!-- Left -->
+    <div data-aos="fade-right">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+        <i data-lucide="zap" style="width:24px;height:24px;color:#7AD1B8;flex-shrink:0;"></i>
+        <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#948B9E;font-weight:600;">Fundador do Clube</span>
+      </div>
+      <h2 class="heading mid-title" style="color:#F2F2F2;margin-bottom:0;">
+        UM RECADO<br>DIRETO DO<br><span class="text-gradient">ALLAN</span>
+      </h2>
+    </div>
+
+    <!-- Right -->
+    <div data-aos="fade-left" style="color:#948B9E;line-height:1.72;font-size:15px;">
+      <p style="margin-bottom:18px;">
+        O <strong style="color:#F2F2F2;">TMBC não é um curso</strong>. Não é uma mentoria básica. Não é para quem está começando e quer aprender a criar uma campanha no Meta.
+      </p>
+      <p style="margin-bottom:18px;">
+        Esse é um clube fechado para quem <strong style="color:#F2F2F2;">já escala</strong>. Para quem já move budget real, já testou ângulos, já queimou dinheiro aprendendo. Para quem quer conversar de igual pra igual com outros compradores de mídia que estão no mesmo nível.
+      </p>
+      <p style="margin-bottom:18px;">
+        Aqui você vai encontrar estratégias que não estão no YouTube. Estudos de caso reais, com números reais. Acesso direto a profissionais que estão na linha de frente do Direct Response no Brasil e no mundo.
+      </p>
+      <p style="margin-bottom:28px;">
+        Se isso ressoa com você — bem-vindo. Se ainda está aprendendo o básico, respeito, mas esse não é o lugar certo.
+      </p>
+      <div style="border-top:1px solid #2A2433;padding-top:20px;">
+        <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:4px;">Allan Luiz</p>
+        <p style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#948B9E;">Founder — The Media Buyer Club</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     PARE AGORA
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px;max-width:1200px;margin:0 auto;">
+  <!-- Title -->
+  <div style="text-align:center;margin-bottom:56px;" data-aos="fade-up">
+    <h2 class="heading section-title" style="color:#EF5F5F;margin-bottom:16px;">
+      PARE AGORA<br>SE VOCÊ FOR<br>INICIANTE
+    </h2>
+    <p style="color:#948B9E;max-width:480px;margin:0 auto;font-size:15px;line-height:1.6;">
+      Este clube não é para todo mundo. Entenda se você está pronto antes de continuar.
+    </p>
+  </div>
+
+  <!-- Bento 2×2 -->
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:800px;margin:0 auto;" class="bento-danger">
+
+    <!-- Card 1 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="60">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="shield-off" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Sem Babá</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">Não temos suporte para dúvidas básicas. Se você precisa de tutor para cada passo, este não é o lugar.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="120">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="trending-up" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Sem Promessas</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">Não prometemos resultados mágicos. O que você encontra aqui são estratégias reais que exigem execução real.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="180">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="zap-off" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Sem Básico</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">O conteúdo começa exatamente onde a maioria dos cursos termina. Base sólida é pré-requisito.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="240">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="users" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Sem Garantias</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">Sem reembolso. Você está investindo em acesso, networking e conhecimento — não em um produto.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SHOWCASE — O MASTERMIND
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px;max-width:1200px;margin:0 auto;">
+  <div data-aos="fade-up" style="position:relative;background:#0D0911;border:1px solid #2A2433;border-radius:40px;padding:clamp(40px,6vw,80px);overflow:hidden;">
+
+    <!-- Glow inside card -->
+    <div class="glow-green" style="width:500px;height:500px;top:-100px;right:-100px;opacity:.6;"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1;" class="showcase-grid">
+
+      <!-- Left -->
+      <div>
+        <div class="pill" style="margin-bottom:24px;"><span class="pill-dot"></span>MASTERMIND</div>
+        <h2 class="heading mid-title" style="color:#F2F2F2;margin-bottom:24px;">
+          O MASTERMIND<br><span class="text-gradient">DEFINITIVO</span>
+        </h2>
+        <p style="color:#948B9E;line-height:1.7;font-size:15px;margin-bottom:16px;">
+          Um ambiente onde os melhores compradores de mídia do Brasil se encontram, trocam estratégias e evoluem juntos. O poder real do TMBC é o networking.
+        </p>
+        <p style="color:#948B9E;line-height:1.7;font-size:15px;">
+          Quando você tem acesso a pessoas que estão rodando campanhas com R$ 500k/mês, as conversas mudam completamente de nível. E é exatamente isso que acontece aqui.
+        </p>
+      </div>
+
+      <!-- Right — Stats -->
+      <div style="display:grid;gap:12px;">
+        <div style="background:#07040B;border:1px solid #2A2433;border-radius:20px;padding:32px 36px;">
+          <div class="stat-num" style="font-size:clamp(48px,6vw,80px);color:#7AD1B8;margin-bottom:8px;" data-count="200">200+</div>
+          <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#948B9E;font-weight:600;">Membros de Elite</div>
+        </div>
+        <div style="background:#07040B;border:1px solid #2A2433;border-radius:20px;padding:32px 36px;">
+          <div class="stat-num" style="font-size:clamp(48px,6vw,80px);color:#F2F2F2;margin-bottom:8px;">+3<span style="color:#7AD1B8;">bi</span></div>
+          <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#948B9E;font-weight:600;">Em mídia paga gerenciada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     ROADMAP 2026
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px;max-width:900px;margin:0 auto;">
+
+  <!-- Section header -->
+  <div style="text-align:center;margin-bottom:72px;" data-aos="fade-up">
+    <div class="pill" style="margin:0 auto 20px;width:fit-content;"><span class="pill-dot"></span>CRONOGRAMA</div>
+    <h2 class="heading section-title" style="color:#F2F2F2;">
+      ROADMAP<br><span class="text-gradient">2026</span>
+    </h2>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-wrap" id="timeline">
+    <div class="timeline-spine" id="tl-spine"></div>
+
+    <!-- Item 1 — right side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-right">
+      <div style="grid-column:1;display:flex;justify-content:flex-end;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="message-circle" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:4px;">Q1 2026</div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Grupo WhatsApp</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Comunidade ativa com atualizações diárias do mercado e alertas de oportunidade em tempo real.</p>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;"></div>
+    </div>
+
+    <!-- Item 2 — left side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-left">
+      <div style="grid-column:1;"></div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="hash" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:4px;">Q2 2026</div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Networking Discord</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Servidor exclusivo com canais temáticos por plataforma, nicho e nível de budget investido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 3 — right side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-right">
+      <div style="grid-column:1;display:flex;justify-content:flex-end;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="video" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:4px;">Q3 2026</div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Calls de Elite</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Chamadas quinzenais ao vivo com análises de campanhas, Q&A aberto e estratégias avançadas exclusivas.</p>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;"></div>
+    </div>
+
+    <!-- Item 4 — left side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;" data-aos="fade-left">
+      <div style="grid-column:1;"></div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="bar-chart-2" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:4px;">Q4 2026</div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Estudos de Caso</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Biblioteca exclusiva com campanhas reais, números reais e aprendizados de alta performance detalhados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     THE LEGENDS
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:64px;" data-aos="fade-up">
+      <div class="pill" style="margin:0 auto 20px;width:fit-content;"><span class="pill-dot"></span>MEMBROS</div>
+      <h2 class="heading section-title" style="color:#F2F2F2;">
+        THE<br><span class="text-gradient">LEGENDS</span>
+      </h2>
+    </div>
+
+    <!-- Avatars carousel -->
+    <div class="carousel-scroll" style="margin-bottom:64px;padding:8px 4px 20px;" data-aos="fade-up">
+
+      <!-- Pedro Andrade -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring">
+          <img src="./pedroa.jpg" alt="Pedro Andrade"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:88px;height:88px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none;">PA</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Pedro Andrade</p>
+          <p style="color:#948B9E;font-size:11px;letter-spacing:0.08em;">Media Buyer</p>
+        </div>
+      </div>
+
+      <!-- Allanzord -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#7AD1B8,#EF5F5F,#9b59b6);">
+          <img src="./allanzord.jpg" alt="Allanzord"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:88px;height:88px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none;">AZ</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Allanzord</p>
+          <p style="color:#7AD1B8;font-size:11px;letter-spacing:0.08em;font-weight:600;">Founder</p>
+        </div>
+      </div>
+
+      <!-- Denis Pereira -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring">
+          <img src="./denis.jpg" alt="Denis Pereira"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:88px;height:88px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none;">DP</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Denis Pereira</p>
+          <p style="color:#948B9E;font-size:11px;letter-spacing:0.08em;">Media Buyer</p>
+        </div>
+      </div>
+
+      <!-- Lucas Rego -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#4a90d9,#7AD1B8);">
+          <img src="./lucasr.jpg" alt="Lucas Rego"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:88px;height:88px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none;">LR</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Lucas Rego</p>
+          <p style="color:#948B9E;font-size:11px;letter-spacing:0.08em;">Media Buyer</p>
+        </div>
+      </div>
+
+      <!-- Dairo Junior -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#9b59b6,#EF5F5F,#7AD1B8);">
+          <img src="./dairo.jpg" alt="Dairo Junior"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:88px;height:88px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none;">DJ</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Dairo Junior</p>
+          <p style="color:#948B9E;font-size:11px;letter-spacing:0.08em;">Media Buyer</p>
+        </div>
+      </div>
+
+    </div><!-- /carousel -->
+
+    <!-- 3 feature cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="feat-grid" data-aos="fade-up">
+
+      <div class="card" style="transition:border-color .25s,box-shadow .25s;" onmouseover="this.style.borderColor='rgba(122,209,184,.35)';this.style.boxShadow='0 0 40px 4px rgba(122,209,184,.08)';" onmouseout="this.style.borderColor='#2A2433';this.style.boxShadow='none';">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="target" style="width:22px;height:22px;color:#7AD1B8;"></i>
+        </div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Direct Response</h3>
+        <p style="color:#948B9E;font-size:14px;line-height:1.65;">Copy, ângulos, criativos e funis que convertem em escala. A arte de fazer o cliente agir agora.</p>
+      </div>
+
+      <div class="card" style="transition:border-color .25s,box-shadow .25s;" onmouseover="this.style.borderColor='rgba(122,209,184,.35)';this.style.boxShadow='0 0 40px 4px rgba(122,209,184,.08)';" onmouseout="this.style.borderColor='#2A2433';this.style.boxShadow='none';">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="activity" style="width:22px;height:22px;color:#7AD1B8;"></i>
+        </div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Media Buying</h3>
+        <p style="color:#948B9E;font-size:14px;line-height:1.65;">Estratégias avançadas em Meta, Google, TikTok e plataformas nativas de alto volume de spend.</p>
+      </div>
+
+      <div class="card" style="transition:border-color .25s,box-shadow .25s;" onmouseover="this.style.borderColor='rgba(122,209,184,.35)';this.style.boxShadow='0 0 40px 4px rgba(122,209,184,.08)';" onmouseout="this.style.borderColor='#2A2433';this.style.boxShadow='none';">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="crown" style="width:22px;height:22px;color:#7AD1B8;"></i>
+        </div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Mastermind</h3>
+        <p style="color:#948B9E;font-size:14px;line-height:1.65;">Networking real com quem está na elite. Conexões que valem mais do que qualquer curso do mercado.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     DEPOIMENTOS
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:64px;" data-aos="fade-up">
+      <div class="pill" style="margin:0 auto 20px;width:fit-content;"><span class="pill-dot"></span>DEPOIMENTOS</div>
+      <h2 class="heading section-title" style="color:#F2F2F2;">
+        PROVA<br><span class="text-gradient">SOCIAL</span>
+      </h2>
+    </div>
+
+    <div class="masonry" data-aos="fade-up">
+
+      <div class="masonry-item card">
+        <p style="color:#948B9E;font-style:italic;font-size:14px;line-height:1.75;margin-bottom:20px;">"Entrei no TMBC há 6 meses e em 3 meses apliquei estratégias que triplicaram meu ROAS. A qualidade das pessoas dentro é incomparável com qualquer grupo que participei antes."</p>
+        <div style="border-top:1px solid #2A2433;padding-top:16px;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Marcos Oliveira</p>
+          <p style="color:#948B9E;font-size:11px;">Gestor de Tráfego @ Info</p>
+        </div>
+      </div>
+
+      <div class="masonry-item card">
+        <p style="color:#948B9E;font-style:italic;font-size:14px;line-height:1.75;margin-bottom:20px;">"O nível das conversas é absurdo. Em um único call aprendi mais sobre estrutura de campanhas do que em 2 anos estudando sozinho no YouTube."</p>
+        <div style="border-top:1px solid #2A2433;padding-top:16px;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Fernanda Costa</p>
+          <p style="color:#948B9E;font-size:11px;">Media Buyer @ E-commerce</p>
+        </div>
+      </div>
+
+      <div class="masonry-item card">
+        <p style="color:#948B9E;font-style:italic;font-size:14px;line-height:1.75;margin-bottom:20px;">"O TMBC não é para iniciantes — e isso é ótimo. Significa que cada conversa é avançada, cada insight é acionável. Zero enrolação, zero guru, zero ego."</p>
+        <div style="border-top:1px solid #2A2433;padding-top:16px;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Rafael Santos</p>
+          <p style="color:#948B9E;font-size:11px;">Comprador de Mídia @ Agência</p>
+        </div>
+      </div>
+
+      <div class="masonry-item card">
+        <p style="color:#948B9E;font-style:italic;font-size:14px;line-height:1.75;margin-bottom:20px;">"Minha rede de contatos mudou completamente. Fiz parcerias que geraram mais de R$ 800k em receita colaborativa. O networking do TMBC vale 10x o investimento."</p>
+        <div style="border-top:1px solid #2A2433;padding-top:16px;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Thiago Almeida</p>
+          <p style="color:#948B9E;font-size:11px;">Founder @ Direct Co.</p>
+        </div>
+      </div>
+
+      <div class="masonry-item card">
+        <p style="color:#948B9E;font-style:italic;font-size:14px;line-height:1.75;margin-bottom:20px;">"A biblioteca de estudos de caso é um recurso que uso toda semana. Ter acesso a números reais de campanhas reais é diferencial competitivo enorme no mercado."</p>
+        <div style="border-top:1px solid #2A2433;padding-top:16px;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Juliana Mendes</p>
+          <p style="color:#948B9E;font-size:11px;">Media Buyer @ SaaS</p>
+        </div>
+      </div>
+
+      <div class="masonry-item card">
+        <p style="color:#948B9E;font-style:italic;font-size:14px;line-height:1.75;margin-bottom:20px;">"Nunca vi uma comunidade tão focada em resultado. Aqui ninguém perde tempo, todo mundo sabe o que quer. O padrão de qualidade é simplesmente outro nível."</p>
+        <div style="border-top:1px solid #2A2433;padding-top:16px;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px;">Bruno Carvalho</p>
+          <p style="color:#948B9E;font-size:11px;">Performance Lead @ Infoproduto</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER CTA
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px;">
+  <div style="max-width:900px;margin:0 auto;" data-aos="fade-up">
+    <div style="position:relative;background:#7AD1B8;border-radius:40px;padding:clamp(48px,8vw,96px) clamp(28px,6vw,80px);text-align:center;overflow:hidden;">
+
+      <!-- Decorative blobs -->
+      <div style="position:absolute;top:-60px;left:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none;"></div>
+
+      <!-- Noise texture overlay -->
+      <div style="position:absolute;inset:0;opacity:.04;border-radius:40px;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22/%3E%3C/filter%3E%3Crect width=%22300%22 height=%22300%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');pointer-events:none;"></div>
+
+      <div style="position:relative;z-index:1;">
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1px solid rgba(0,0,0,0.2);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(7,4,11,0.65);margin-bottom:24px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:rgba(7,4,11,0.4);"></span>
+          PRÓXIMA TURMA
+        </div>
+
+        <h2 class="heading" style="font-size:clamp(40px,7vw,88px);color:#07040B;margin-bottom:20px;">
+          PRONTO PARA<br>O PRÓXIMO<br>NÍVEL?
+        </h2>
+
+        <p style="color:rgba(7,4,11,0.65);font-size:16px;line-height:1.65;max-width:480px;margin:0 auto 36px;">
+          As vagas são limitadas e os ingressos estão encerrados no momento. Entre na lista de espera para ser notificado quando abrir.
+        </p>
+
+        <button style="background:#07040B;color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:900;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;padding:16px 40px;border-radius:14px;border:none;cursor:not-allowed;display:inline-flex;align-items:center;gap:10px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          <i data-lucide="lock" style="width:15px;height:15px;"></i>
+          INGRESSO ENCERRADO
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px 100px;max-width:720px;margin:0 auto;">
+
+  <div style="text-align:center;margin-bottom:56px;" data-aos="fade-up">
+    <h2 class="heading mid-title" style="color:#F2F2F2;">
+      PERGUNTAS<br><span class="text-gradient">FREQUENTES</span>
+    </h2>
+  </div>
+
+  <div id="faq-list" data-aos="fade-up"></div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer style="border-top:1px solid #2A2433;padding:36px 24px;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:26px;height:26px;background:#7AD1B8;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:11px;color:#07040B;">T</span>
+      </div>
+      <span style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#948B9E;">THE MEDIA BUYER CLUB</span>
+    </div>
+    <p style="color:#948B9E;font-size:12px;">© 2026 The Media Buyer Club. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════════════ -->
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.js"></script>
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  /* ── Init ────────────────────────────── */
+  lucide.createIcons();
+  AOS.init({ duration: 680, easing: 'ease-out-cubic', once: true, offset: 70 });
+
+  /* ── Header scroll ────────────────────── */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── FAQ data & render ─────────────────── */
+  const faqs = [
+    {
+      q: 'Para quem é o TMBC?',
+      a: 'Para compradores de mídia e gestores de tráfego que já trabalham com campanhas pagas e querem elevar seu nível. Recomendamos pelo menos 6 meses de experiência prática com alguma plataforma de anúncios.'
+    },
+    {
+      q: 'Qual é o formato do Mastermind?',
+      a: 'Combinamos comunidade digital (WhatsApp + Discord), calls ao vivo quinzenais, biblioteca de estudos de caso e networking direto com os melhores profissionais do mercado.'
+    },
+    {
+      q: 'Quando abrem novas vagas?',
+      a: 'As vagas são abertas em turmas com número limitado de membros. Fique atento às nossas redes sociais ou entre na lista de espera para ser o primeiro a saber.'
+    },
+    {
+      q: 'Há garantia de reembolso?',
+      a: 'Não. Como deixamos claro, este é um investimento em acesso, conhecimento e networking. Não oferecemos garantia de devolução — isso garante que apenas pessoas comprometidas entrem.'
+    },
+    {
+      q: 'O que diferencia o TMBC de outros grupos?',
+      a: 'O nível de filtragem dos membros. Cada pessoa que entra precisa ter experiência real comprovada. Isso garante que as conversas sejam sempre avançadas e que o networking tenha valor real de mercado.'
+    },
+    {
+      q: 'É necessário ter uma empresa para participar?',
+      a: 'Não obrigatoriamente, mas você precisa estar ativamente comprando mídia — seja como freelancer, colaborador de agência ou empreendedor que gerencia suas próprias campanhas.'
+    },
+  ];
+
+  const faqList = document.getElementById('faq-list');
+  let openIdx = null;
+
+  faqs.forEach((item, i) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'border-bottom:1px solid #2A2433;';
+
+    wrap.innerHTML = `
+      <button id="faq-btn-${i}" aria-expanded="false"
+        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;">
+        <span style="font-family:'Inter Tight',sans-serif;font-weight:700;font-size:16px;color:#F2F2F2;transition:color .2s;"
+              id="faq-q-${i}">${item.q}</span>
+        <i data-lucide="plus" id="faq-icon-${i}"
+           style="width:18px;height:18px;color:#948B9E;flex-shrink:0;transition:transform .3s,color .3s;"></i>
+      </button>
+      <div class="faq-answer" id="faq-ans-${i}">
+        <p style="color:#948B9E;font-size:14px;line-height:1.72;padding-bottom:22px;">${item.a}</p>
+      </div>`;
+
+    faqList.appendChild(wrap);
+
+    wrap.querySelector(`#faq-btn-${i}`).addEventListener('click', () => toggleFaq(i));
+  });
+
+  // Re-create icons after DOM manipulation
+  lucide.createIcons();
+
+  function toggleFaq(idx) {
+    const ans  = document.getElementById(`faq-ans-${idx}`);
+    const icon = document.getElementById(`faq-icon-${idx}`);
+    const q    = document.getElementById(`faq-q-${idx}`);
+    const btn  = document.getElementById(`faq-btn-${idx}`);
+    const open = ans.style.maxHeight && ans.style.maxHeight !== '0px';
+
+    // Close previous
+    if (openIdx !== null && openIdx !== idx) {
+      const pAns  = document.getElementById(`faq-ans-${openIdx}`);
+      const pIcon = document.getElementById(`faq-icon-${openIdx}`);
+      const pQ    = document.getElementById(`faq-q-${openIdx}`);
+      pAns.style.maxHeight  = '0px';
+      pIcon.style.transform = 'rotate(0deg)';
+      pIcon.style.color     = '#948B9E';
+      pQ.style.color        = '#F2F2F2';
+      document.getElementById(`faq-btn-${openIdx}`).setAttribute('aria-expanded', 'false');
+    }
+
+    if (open) {
+      ans.style.maxHeight   = '0px';
+      icon.style.transform  = 'rotate(0deg)';
+      icon.style.color      = '#948B9E';
+      q.style.color         = '#F2F2F2';
+      btn.setAttribute('aria-expanded', 'false');
+      openIdx = null;
+    } else {
+      ans.style.maxHeight   = ans.scrollHeight + 'px';
+      icon.style.transform  = 'rotate(45deg)';
+      icon.style.color      = '#7AD1B8';
+      q.style.color         = '#7AD1B8';
+      btn.setAttribute('aria-expanded', 'true');
+      openIdx = idx;
+    }
+  }
+
+  /* ── Responsive grid fixes ─────────────── */
+  function applyResponsive() {
+    const w = window.innerWidth;
+
+    // About 2-col → 1-col
+    document.querySelectorAll('.about-grid').forEach(el => {
+      el.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
+    });
+
+    // Showcase 2-col → 1-col
+    document.querySelectorAll('.showcase-grid').forEach(el => {
+      el.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
+    });
+
+    // Feature 3-col → 1-col
+    document.querySelectorAll('.feat-grid').forEach(el => {
+      el.style.gridTemplateColumns = w < 640 ? '1fr' : w < 900 ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+    });
+
+    // Bento 2-col → 1-col
+    document.querySelectorAll('.bento-danger').forEach(el => {
+      el.style.gridTemplateColumns = w < 640 ? '1fr' : 'repeat(2,1fr)';
+    });
+
+    // Timeline spine hidden on mobile
+    const spine = document.getElementById('tl-spine');
+    if (spine) spine.style.display = w < 700 ? 'none' : 'block';
+
+    // Timeline items: collapse to single col on mobile
+    document.querySelectorAll('#timeline > div').forEach(row => {
+      if (w < 700) {
+        row.style.gridTemplateColumns = '1fr';
+        row.style.gap = '0';
+        // Show all cells, hide empty ones
+        const cells = row.querySelectorAll(':scope > div');
+        cells.forEach(c => {
+          if (!c.querySelector('.card') && !c.querySelector('.timeline-dot')) {
+            c.style.display = 'none';
+          }
+          if (c.querySelector('.timeline-dot')) c.style.display = 'none';
+        });
+      } else {
+        row.style.gridTemplateColumns = '1fr auto 1fr';
+        row.style.gap = '24px';
+        const cells = row.querySelectorAll(':scope > div');
+        cells.forEach(c => { c.style.display = ''; });
+      }
+    });
+  }
+
+  applyResponsive();
+  window.addEventListener('resize', applyResponsive);
+
+  /* ── Pulse keyframe ────────────────────── */
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.5; transform:scale(0.85); }
+    }
+    @keyframes bounce {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(5px); }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
+</body>
+</html>
